@@ -1,1 +1,1 @@
-repository for code_squad study H1
+# repository for code_squad study

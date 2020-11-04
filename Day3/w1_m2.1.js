@@ -31,7 +31,7 @@ function findingTurn(numeral, number, people, order){
             if((i+1)%people === 0){
                 console.log(`길동이는 "${parsedArray[i]}"를 말해야겠네요.`)
             }
-        }n
+        }
     }
     else{
         for(let i=0; i<parsedArray.length; ++i){

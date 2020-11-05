@@ -26,19 +26,8 @@ function findingTurn(numeral, number, people, order){
     parsedArray.length = 0;
     gameAnalyzer(numeral, number, people);
     console.log(`길동이는 ${order}번째 이니까..`);
-    if(order === people){
-        for(let i =0; i<parsedArray.length; ++i){
-            if((i+1)%people === 0){
-                console.log(`길동이는 "${parsedArray[i]}"를 말해야겠네요.`)
-            }
-        }
-    }
-    else{
-        for(let i=0; i<parsedArray.length; ++i){
-            if((i+1)%people === order){
-                console.log(`길동이는 "${parsedArray[i]}"를 말해야겠네요.`)
-            }
-        }
+    for(let i = order-1; i<parsedArray.length; i+= people){
+        console.log(`길동이는 "${parsedArray[i]}"를 말해야겠네요.`)
     }
 }
 

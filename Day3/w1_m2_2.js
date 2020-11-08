@@ -38,3 +38,25 @@ function filterId(peopleArray){
     return newArr;
 }
 
+
+// 문제 3번 solution
+// 점수는 3종류, 사람 수는 여러 명.
+const grades = [[88,76,77], [33,44,44], [90,100,94], [30,44,98]];
+function scoreAverage(studentScore){
+    let averageScore = [];
+    let averageTopScore = 0;
+    for(let i =0; i<studentScore.length; ++i){
+        let sum = 0;
+        let MAX = 0;
+        for(let j = 0; j<studentScore[i].length; ++j){
+            if(MAX<studentScore[i][j]){
+                MAX = studentScore[i][j];
+            }
+            sum+=studentScore[i][j];
+        }
+        averageScore.push(sum/3);
+        averageTopScore += MAX;       
+    }
+    console.log(`average score : ${averageScore}, average of highest score : ${averageTopScore/studentScore.length}`);
+}
+

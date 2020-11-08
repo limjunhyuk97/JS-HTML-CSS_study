@@ -60,3 +60,18 @@ function scoreAverage(studentScore){
     console.log(`average score : ${averageScore}, average of highest score : ${averageTopScore/studentScore.length}`);
 }
 
+
+// 문제 4번 solution
+import { data } from './w1_m2_object_ex.js';
+function numType2array(){
+    let ansArray = [];
+    for(let level_1 in data){
+        for(let level_2 in data[level_1]){
+            if(typeof data[level_1][level_2] === 'number'){
+                ansArray.push(level_2);
+            }
+        }
+    }
+    return ansArray;
+}
+console.log(numType2array());

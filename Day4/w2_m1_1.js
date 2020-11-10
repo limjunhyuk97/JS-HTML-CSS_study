@@ -54,7 +54,7 @@ class hashMap{
             if(this.hashGrid[index][i][0] === key) this.hashGrid[index][i][1] = 0;
         }
     }
-    
+
     get = (key) =>{
         let index = this.key2Index(key);
         for(let i =0; i <this.hashGrid[index].length; ++i){
@@ -78,10 +78,10 @@ class hashMap{
         this.hashGrid.forEach(element => {
             if(element !== undefined) flag = 1;
         });
-
         if(flag === 0) return false;
         else return true;
     }
+
     keys = () =>{
         let keyLocation = [];
         this.hashGrid.forEach((element,index) => {
@@ -90,9 +90,22 @@ class hashMap{
         return keyLocation;
     }
 
+    replace = function(key, value){
+        let index = this.key2Index(key);
+        for(let n = 0 ; n<this.hashGrid[index].length; ++n) if(this.hashGrid[index][n][0] === key) this.hashGrid[index][n][1] = value;
+    }
+
+    itemSize = function(){
+        let sum = 0;
+        this.hashGrid.forEach((element,index) => {
+            if(element !== undefined) sum += (2 * element.length);
+        });
+        return sum;
+    }
+
 }
 
-//////////////////////////////////////////////// test case ////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////// test case ////////////////////////////////////////////////////
 
 let newGrid1 = new hashMap;
 newGrid1.put('limjunhyuk97@gmail.com', '330000');
@@ -100,3 +113,6 @@ newGrid1.put('i@gmail.com', '3300000');
 newGrid1.get('i@gmail.com');
 newGrid1.remove('limjunhyuk97@gmail.com');
 console.log(newGrid1.keys());
+newGrid1.replace('i@gmail.com', '2000');
+console.log(newGrid1.hashGrid[4][1][1]);
+console.log(newGrid1.itemSize());

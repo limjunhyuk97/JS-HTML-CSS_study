@@ -1,5 +1,3 @@
-// 해쉬 맵처럼 동작하는 코드를 구현한다.
-// key Hash value Index
 class hashMap{
 
     constructor(size){
@@ -15,12 +13,10 @@ class hashMap{
     key2Hash = (key) => {
         const regExp_Email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         let hash = 0;
-        // 이메일 주소 값이 아니면 거른다.
         if(key.match(regExp_Email) === null){
             console.log("wrong input!");
             return ;
         }
-        // 이메일 주소 값이면 받아서 @ 앞부분만 저장.
         else{
             for(let i=0; i <key.length; ++i){
                 if(key[i] === '@') break;
@@ -42,7 +38,6 @@ class hashMap{
         return this.hash2Index(hash);
     }
 
-    // 특정 index에 key 값과 value 값 넣어주기
     put = (key,value) => {
         let index = this.key2Index(key);
         if(this.hashGrid[index] === undefined){
@@ -96,6 +91,8 @@ class hashMap{
     }
 
 }
+
+//////////////////////////////////////////////// test case ////////////////////////////////////////////////////////////////////
 
 let newGrid1 = new hashMap;
 newGrid1.put('limjunhyuk97@gmail.com', '330000');

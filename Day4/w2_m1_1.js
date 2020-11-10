@@ -12,7 +12,6 @@ class hashMap{
         }
     }
 
-    // key값을 hash 값으로 반환
     key2Hash = (key) => {
         const regExp_Email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         let hash = 0;
@@ -33,76 +32,74 @@ class hashMap{
         return hash;
     }
 
-    // hash 값을 index 값으로 반환
     hash2Index = (hash) => {
         let index = hash % (this.size + 1);
         return index;
     }
 
+    key2Index = (key) =>{
+        let hash = this.key2Hash(key);
+        return this.hash2Index(hash);
+    }
+
     // 특정 index에 key 값과 value 값 넣어주기
     put = (key,value) => {
-        let hash = this.key2Hash(key);
-        let index = this.hash2Index(hash);
-        // 공간이 점유가 안되어있다면
-        if(this.hashGrid[index] === undefined || this.hashGrid[index] === 0){
+        let index = this.key2Index(key);
+        if(this.hashGrid[index] === undefined){
             this.hashGrid[index]=[[key, value]];
         }
-        // 공간이 점유가 되어있다면
         else{
             this.hashGrid[index].push([key, value]);
         }
     }
 
-    // remove 값 제거
     remove = (key) =>{
-        let hash = this.key2Hash(key);
-        let index = this.hash2Index(hash);
+        let index = this.key2Index(key);
         for(let i =0; i <this.hashGrid[index].length; ++i){
             if(this.hashGrid[index][i][0] === key) this.hashGrid[index][i][1] = 0;
         }
     }
-
-    // get 값 불러오기
+    
     get = (key) =>{
-        let hash = this.key2Hash(key);
-        let index = this.hash2Index(hash);
+        let index = this.key2Index(key);
         for(let i =0; i <this.hashGrid[index].length; ++i){
             if(this.hashGrid[index][i][0] === key) console.log(this.hashGrid[index][i][1]);
         }
     }
 
-    // 해당 키가 존재하는 지를 판단한다.
     contatinsKey = (key) => {
-        let hash = this.key2Hash(key);
-        let index = this.hash2Index(hash);
+        let index = this.key2Index(key);
         for(let i =0; i <this.hashGrid[index].length; ++i){
             if(this.hashGrid[index][i][0] === key) console.log(true);
         }
     }
 
-    // hashGrid 정리
     clear = () =>{
-        this.hashGrid.fill(0);
+        this.hashGrid.length = 0;
     }
 
-    // isEmpty 비어있는 맵인지 확인하기
     isEmpty = () => {
         let flag = 0;
-        for(let i=0; i<this.size; ++i){
-            if(this.hashGrid[i] !== 0 && this.hashGrid[i] !== undefined) flag =1;
-        }
+        this.hashGrid.forEach(element => {
+            if(element !== undefined) flag = 1;
+        });
 
         if(flag === 0) return false;
         else return true;
     }
-
-    //
+    keys = () =>{
+        let keyLocation = [];
+        this.hashGrid.forEach((element,index) => {
+            if(element !== undefined) for(let i=0; i<element.length; ++i) keyLocation.push(this.hashGrid[index][i][0]);
+        });
+        return keyLocation;
+    }
 
 }
 
 let newGrid1 = new hashMap;
 newGrid1.put('limjunhyuk97@gmail.com', '330000');
-newGrid1.put('i@gmail.com', ' 3300000');
+newGrid1.put('i@gmail.com', '3300000');
 newGrid1.get('i@gmail.com');
 newGrid1.remove('limjunhyuk97@gmail.com');
-console.log(newGrid1.isEmpty());
+console.log(newGrid1.keys());

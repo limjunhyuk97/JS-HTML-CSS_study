@@ -45,11 +45,11 @@ class hashMap{
         let index = this.hash2Index(hash);
         // 공간이 점유가 안되어있다면
         if(this.hashGrid[index] === undefined || this.hashGrid[index] === 0){
-            this.hashGrid[index]=[[hash, key, value]];
+            this.hashGrid[index]=[[key, value]];
         }
         // 공간이 점유가 되어있다면
         else{
-            this.hashGrid[index].push([hash, key, value]);
+            this.hashGrid[index].push([key, value]);
         }
     }
 
@@ -58,7 +58,25 @@ class hashMap{
         let hash = this.key2Hash(key);
         let index = this.hash2Index(hash);
         for(let i =0; i <this.hashGrid[index].length; ++i){
-            if(this.hashGrid[index][i][1] === key) this.hashGrid[index][i][2] = 0;
+            if(this.hashGrid[index][i][0] === key) this.hashGrid[index][i][1] = 0;
+        }
+    }
+
+    // get 값 불러오기
+    get = (key) =>{
+        let hash = this.key2Hash(key);
+        let index = this.hash2Index(hash);
+        for(let i =0; i <this.hashGrid[index].length; ++i){
+            if(this.hashGrid[index][i][0] === key) console.log(this.hashGrid[index][i][1]);
+        }
+    }
+
+    // 해당 키가 존재하는 지를 판단한다.
+    contatinsKey = (key) => {
+        let hash = this.key2Hash(key);
+        let index = this.hash2Index(hash);
+        for(let i =0; i <this.hashGrid[index].length; ++i){
+            if(this.hashGrid[index][i][0] === key) console.log(true);
         }
     }
 
@@ -67,10 +85,24 @@ class hashMap{
         this.hashGrid.fill(0);
     }
 
+    // isEmpty 비어있는 맵인지 확인하기
+    isEmpty = () => {
+        let flag = 0;
+        for(let i=0; i<this.size; ++i){
+            if(this.hashGrid[i] !== 0 && this.hashGrid[i] !== undefined) flag =1;
+        }
+
+        if(flag === 0) return false;
+        else return true;
+    }
+
+    //
 
 }
 
 let newGrid1 = new hashMap;
 newGrid1.put('limjunhyuk97@gmail.com', '330000');
 newGrid1.put('i@gmail.com', ' 3300000');
-newGrid1.remove('limjunhyuk97@gmail.com')
+newGrid1.get('i@gmail.com');
+newGrid1.remove('limjunhyuk97@gmail.com');
+console.log(newGrid1.isEmpty());

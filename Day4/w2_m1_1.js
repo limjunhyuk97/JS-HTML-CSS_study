@@ -57,13 +57,9 @@ class hashMap{
     remove = (key) =>{
         let hash = this.key2Hash(key);
         let index = this.hash2Index(hash);
-        if(this.hashGrid[index].length !== 1){
-            for()
+        for(let i =0; i <this.hashGrid[index].length; ++i){
+            if(this.hashGrid[index][i][1] === key) this.hashGrid[index][i][2] = 0;
         }
-        else{
-
-        }
-
     }
 
     // hashGrid 정리
@@ -77,3 +73,4 @@ class hashMap{
 let newGrid1 = new hashMap;
 newGrid1.put('limjunhyuk97@gmail.com', '330000');
 newGrid1.put('i@gmail.com', ' 3300000');
+newGrid1.remove('limjunhyuk97@gmail.com')

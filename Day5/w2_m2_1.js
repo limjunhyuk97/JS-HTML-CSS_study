@@ -17,20 +17,34 @@ class objectAnalyze{
         else console.log(`깊이 수준은 ${leftBraketNum}이며, 총 ${this.number.length}개의 원소가 포함되어 있습니다!`)
     }
     
-    // runInfo는 3번 문제에 대한 source code.
-    runInfo(){
+    // 3번 문제 source code 들어갈 예정입니다.
+    runInfo(data){
+        let dataArray = this.thinDown(data);
+        dataArray.forEach((element, index) => {
 
+
+
+        })
     }
 
     thinDown(data){
-        let dataArray = data.split("");
-        for(let i = 0; i <dataArray.length ; ++i){
-            if(dataArray[i] === ','){
-                dataArray.splice(i,1);
-                --i;
+        let splitArray = data.split("");
+        let dataArray = [];
+        let flag = 0, tmp = 0;
+        for(let i = 0; i <splitArray.length ; ++i){
+            if(!isNaN(splitArray[i]) && flag === 0){
+                flag =1;
+                tmp = i;
             }
+            else if(isNaN(splitArray[i]) && flag ===1){
+                flag = 0;
+                dataArray.push(splitArray.slice(tmp, i).join(''));
+                dataArray.push(splitArray[i]);
+            }
+            else if(!isNaN(splitArray[i]) && flag === 0) continue;
+            else dataArray.push(splitArray[i]);
         }
         return dataArray;
     }
-    
+
 }

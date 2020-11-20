@@ -77,16 +77,10 @@ function timeConversion(s) {
 //p6
 function kangaroo(x1, v1, x2, v2) {
     if(x1<x2){
-        if(v1<=v2) return no();
+        if(v1<=v2) return "NO";
         else{
-            if(Number.isInteger((x2-x1)/(v1-v2))) return yes();
-            else return no();
+            if(Number.isInteger((x2-x1)/(v1-v2))) return "YES";
+            else return "NO";
         }
     }
-}
-function no(){
-    return "NO";
-}
-function yes(){
-    return "YES";
 }

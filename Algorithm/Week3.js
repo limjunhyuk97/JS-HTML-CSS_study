@@ -83,18 +83,6 @@ function kangaroo(x1, v1, x2, v2) {
             else return no();
         }
     }
-    else if(x1>x2){
-        if(v1>=v2) return no();
-        else{
-            if(Number.isInteger((x1-x2)/(v2-v1))) return yes();
-            else return no();
-        }
-    }
-    else{
-        if(v1 !== v2) return no();
-        else return yes();
-    }
-
 }
 function no(){
     return "NO";

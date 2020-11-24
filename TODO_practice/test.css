@@ -1,0 +1,22 @@
+body{
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+.js-clock{
+    /* 화면 중앙 정렬 */
+    position:relative;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    /* 폰트 지정 */
+    color: rgb(245, 246, 250);
+    font-weight: bolder;
+    font-size: 50px;
+    text-align: center;
+}

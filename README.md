@@ -1,1 +1,1 @@
-# repository for code_squad study
+# repository for JS_HTML_CSS study
